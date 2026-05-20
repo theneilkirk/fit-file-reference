@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/theneilkirk/fit-file-reference/schema/record.schema.json",
+  "title": "FIT File Reference Record",
+  "description": "A structured record documenting the provenance and field schema of an analysed FIT activity file.",
+  "type": "object",
+  "required": ["record_id", "schema_version", "provenance", "devices", "activity", "message_types", "fields"],
+  "properties": {
+
+    "record_id": {
+      "type": "string",
+      "description": "Stable unique identifier. Format: {manufacturer}-{product_slug}-{source_platform}-{source_type}-{sport}-{NNN}. See schema/vocabulary.md.",
+      "pattern": "^[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[0-9]{3}$"
+    },
+
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record conforms to.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+
+    "provenance": {
+      "type": "object",
+      "description": "Where the file came from. No PII — no coordinates, serial numbers, timestamps, or account-specific IDs.",
+      "required": ["source_type", "platform", "export_method"],
+      "properties": {
+        "source_type":      { "type": "string", "description": "See vocabulary: singleexport, bulkexport, directdevice" },
+        "platform":         { "type": "string", "description": "See vocabulary: garminconnect, strava, device, etc." },
+        "export_method":    { "type": "string", "description": "Human-readable description of the specific export path used" },
+        "filename_pattern": { "type": "string", "description": "The filename pattern used by this platform/source_type combination, with placeholders. E.g. '{activity_id}_ACTIVITY.fit'" },
+        "zip_contents":     { "type": "array", "items": { "type": "string" }, "description": "Files present in the ZIP, with actual names replaced by pattern placeholders" },
+        "notes":            { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    "devices": {
+      "type": "object",
+      "description": "Devices recorded in device_info messages. No serial numbers or ANT IDs.",
+      "required": ["primary"],
+      "properties": {
+        "primary": {
+          "type": "object",
+          "description": "The creator device — the watch or head unit that recorded the file.",
+          "required": ["manufacturer", "product_name"],
+          "properties": {
+            "role":               { "type": "string", "const": "creator" },
+            "manufacturer":       { "type": "string" },
+            "product_name":       { "type": "string" },
+            "garmin_product_id":  { "type": "integer", "description": "Raw product integer from FIT file. Useful for programmatic device identification." },
+            "software_version":   { "type": "string" },
+            "source_type":        { "type": "string" },
+            "device_index":       { "type": "string" },
+            "notes":              { "type": "string" }
+          }
+        },
+        "sensors": {
+          "type": "array",
+          "description": "Additional devices and internal modules recorded in device_info.",
+          "items": {
+            "type": "object",
+            "required": ["device_index", "device_type"],
+            "properties": {
+              "device_index":       { "type": ["integer", "string"] },
+              "device_type":        { "type": "string" },
+              "device_type_raw":    { "type": "integer", "description": "Raw integer when device_type cannot be decoded" },
+              "manufacturer":       { "type": "string" },
+              "product_name":       { "type": "string" },
+              "garmin_product_id":  { "type": "integer" },
+              "software_version":   { "type": "string" },
+              "hardware_version":   { "type": "string" },
+              "ant_network":        { "type": "string" },
+              "source_type":        { "type": "string" },
+              "notes":              { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "activity": {
+      "type": "object",
+      "description": "High-level activity summary. No timestamps or coordinates.",
+      "required": ["sport", "sub_sport", "num_laps", "num_records", "structured_workout"],
+      "properties": {
+        "sport":               { "type": "string" },
+        "sub_sport":           { "type": "string" },
+        "display_name":        { "type": "string", "description": "Value of session def_num 110 (Garmin activity display name)" },
+        "num_laps":            { "type": "integer" },
+        "num_records":         { "type": "integer" },
+        "structured_workout":  { "type": "boolean" },
+        "notes":               { "type": "string" }
+      }
+    },
+
+    "message_types": {
+      "type": "object",
+      "description": "All message types present in the file. Keys are message type names (unknown types use their raw number as 'unknown_N'). Values describe count and notes.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["count"],
+        "properties": {
+          "count": { "type": "integer" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+
+    "fields": {
+      "type": "object",
+      "description": "Field presence by message type. Only record, session, and lap are required; other message types may be added.",
+      "required": ["record", "session", "lap"],
+      "properties": {
+        "record":  { "$ref": "#/definitions/field_list" },
+        "session": { "$ref": "#/definitions/field_list" },
+        "lap":     { "$ref": "#/definitions/field_list" }
+      },
+      "additionalProperties": { "$ref": "#/definitions/field_list" }
+    }
+  },
+
+  "definitions": {
+    "field_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["def_num", "name", "status", "registry_status"],
+        "properties": {
+          "def_num":          { "type": "integer", "description": "Field definition number within this message type" },
+          "name":             { "type": "string",  "description": "fitparse field name, or 'unknown_N' if unrecognised" },
+          "status":           { "type": "string",  "enum": ["populated", "empty", "mixed"] },
+          "registry_status":  { "type": "string",  "enum": ["sdk", "garmin_proprietary", "ffv_undocumented", "empirical", "undocumented", "new"] },
+          "ffv_name":         { "type": "string",  "description": "Name as shown by FitFileViewer, if different from fitparse name" },
+          "notes":            { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
