@@ -1,0 +1,134 @@
+{
+  "_description": "Cross-record registry of unknown FIT message types, keyed by manufacturer. Tracks what each proprietary message type number means, based on accumulated evidence across analysed files. Update this file alongside writing a new record whenever a message type is confirmed or a hypothesis is formed.",
+  "_confidence_values": ["confirmed", "probable", "speculative", "unknown"],
+  "_schema_version": "0.1.0",
+
+  "garmin": {
+    "unknown_13": {
+      "ffv_name": null,
+      "hypothesis": "Possibly device capabilities or feature flags — single occurrence per file suggests a one-time declaration message",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_22": {
+      "ffv_name": null,
+      "hypothesis": "Possibly related to events or connectivity — count matches event message count in record-001 (6)",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_79": {
+      "ffv_name": null,
+      "hypothesis": "Single occurrence — possibly a session-level summary or configuration block",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_104": {
+      "ffv_name": null,
+      "hypothesis": "Count matches lap count (9) — likely a per-lap proprietary message, possibly Garmin lap analytics or training effect per lap",
+      "confidence": "probable",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_113": {
+      "ffv_name": null,
+      "hypothesis": "3 occurrences — possibly related to HRM connection events or sensor state changes",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_140": {
+      "ffv_name": null,
+      "hypothesis": "Single occurrence — possibly a training status or recovery advisory block",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_141": {
+      "ffv_name": null,
+      "hypothesis": "Single occurrence — possibly paired with unknown_140 as a related training metric block",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_147": {
+      "ffv_name": null,
+      "hypothesis": "Single occurrence — unknown",
+      "confidence": "unknown",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_216": {
+      "ffv_name": null,
+      "hypothesis": "20 occurrences in a ~49-minute run — possibly a periodic summary message (e.g. every 2–3 minutes), could be stress, body battery, or HRV snapshots",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_233": {
+      "ffv_name": null,
+      "hypothesis": "Count exactly matches record message count (2923) — one per second alongside each record message. Likely a parallel per-second proprietary data stream; strong candidate for running dynamics or raw sensor data from the chest strap or accelerometer",
+      "confidence": "probable",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_288": {
+      "ffv_name": null,
+      "hypothesis": "2 occurrences — possibly bookend messages (start/end), similar to device_info pattern",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_312": {
+      "ffv_name": null,
+      "hypothesis": "10 occurrences — unknown; does not obviously map to laps, devices, or events",
+      "confidence": "unknown",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_313": {
+      "ffv_name": null,
+      "hypothesis": "4 occurrences — possibly paired with unknown_312",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_325": {
+      "ffv_name": null,
+      "hypothesis": "336 occurrences — sub-minute frequency suggests a periodic metric; possible candidates: HRV intervals, respiration snapshots, or stress measurements",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_326": {
+      "ffv_name": null,
+      "hypothesis": "49 occurrences in a ~49-minute run — strongly suggests a once-per-minute message; likely a minute-level summary (e.g. Garmin intensity minutes, training load per minute, or metabolic snapshot)",
+      "confidence": "probable",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_327": {
+      "ffv_name": null,
+      "hypothesis": "5 occurrences — unknown; possibly related to unknown_326 as a subset or trigger message",
+      "confidence": "speculative",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_394": {
+      "ffv_name": null,
+      "hypothesis": "Single occurrence — unknown",
+      "confidence": "unknown",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    },
+    "unknown_499": {
+      "ffv_name": null,
+      "hypothesis": "Single occurrence — high message number suggests a newer Garmin firmware feature; unknown",
+      "confidence": "unknown",
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "notes": null
+    }
+  }
+}
