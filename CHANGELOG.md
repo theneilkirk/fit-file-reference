@@ -6,6 +6,38 @@ Entries here represent findings that update the shared reference — newly ident
 
 ---
 
+## 2026-05-20
+
+### Source: `garmin-fenix7prosolar-garminconnect-singleexport-running-001`
+
+**13 unknown message types confirmed via FitFileViewer**
+
+All identities supplied by eyeballing in FitFileViewer. Types marked * in FFV are undocumented (ffv_undocumented); unknown_13 is documented (garmin_proprietary).
+
+| Message type | FFV name | Registry status | Notes |
+|---|---|---|---|
+| unknown_13 | training_settings | garmin_proprietary | Documented by FFV. Session-level training config. |
+| unknown_22 | device_used | ffv_undocumented | Count of 6 may reflect paired sensors. |
+| unknown_79 | user_metrics | ffv_undocumented | Single occurrence; session-level physio snapshot. |
+| unknown_104 | device_status | ffv_undocumented | Count 9 = one per lap; prior per-lap hypothesis directionally correct. |
+| unknown_113 | best_effort | ffv_undocumented | 3 occurrences; personal best tracking segments. |
+| unknown_140 | activity_metrics | ffv_undocumented | Single occurrence; session-level metrics summary. |
+| unknown_141 | epo_status | ffv_undocumented | EPO = Extended Prediction Orbit (GPS satellite data). |
+| unknown_147 | sensor_settings | ffv_undocumented | Single occurrence; sensor config block. |
+| unknown_216 | time_in_zone | ffv_undocumented | 20 occurrences; likely one per HR zone or zone x metric. Distinct from session field def_num 216 (ending_body_battery). |
+| unknown_312 | split | ffv_undocumented | 10 occurrences; km/mile auto-splits plus partial final. |
+| unknown_313 | split_summary | ffv_undocumented | Aggregated summary across split types; paired with unknown_312. |
+| unknown_326 | gps_event | ffv_undocumented | 49 occurrences in ~49 min run; once-per-minute count was correct, identity was not. |
+| unknown_394 | cpe_status | ffv_undocumented | CPE likely = Course Point or Computed Position Error. |
+
+**Corrected hypotheses**
+- unknown_104: prior hypothesis was per-lap analytics; confirmed as device_status with per-lap cadence intact
+- unknown_113: prior hypothesis was HRM connection events; confirmed as best_effort
+- unknown_312: prior confidence was `unknown`; confirmed as split
+- unknown_326: prior hypothesis was minute-level summary; count was right, identity wrong; confirmed as gps_event
+
+---
+
 ## 2026-05-19
 
 ### Source: `garmin-fenix7prosolar-garminconnect-singleexport-running-001`

@@ -5,67 +5,76 @@
 
   "garmin": {
     "unknown_13": {
-      "ffv_name": null,
-      "hypothesis": "Possibly device capabilities or feature flags — single occurrence per file suggests a one-time declaration message",
-      "confidence": "speculative",
+      "ffv_name": "training_settings",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "garmin_proprietary",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (documented). Single occurrence per file — session-level training configuration block."
     },
     "unknown_22": {
-      "ffv_name": null,
-      "hypothesis": "Possibly related to events or connectivity — count matches event message count in record-001 (6)",
-      "confidence": "speculative",
+      "ffv_name": "device_used",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Count of 6 in record-001 may reflect paired devices/sensors."
     },
     "unknown_79": {
-      "ffv_name": null,
-      "hypothesis": "Single occurrence — possibly a session-level summary or configuration block",
-      "confidence": "speculative",
+      "ffv_name": "user_metrics",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — likely a session-level user physiological snapshot."
     },
     "unknown_104": {
-      "ffv_name": null,
-      "hypothesis": "Count matches lap count (9) — likely a per-lap proprietary message, possibly Garmin lap analytics or training effect per lap",
-      "confidence": "probable",
+      "ffv_name": "device_status",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Count of 9 matches lap count in record-001 — per-lap device status snapshot. Prior hypothesis of per-lap analytics was directionally correct."
     },
     "unknown_113": {
-      "ffv_name": null,
-      "hypothesis": "3 occurrences — possibly related to HRM connection events or sensor state changes",
-      "confidence": "speculative",
+      "ffv_name": "best_effort",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). 3 occurrences in record-001; likely personal best tracking segments."
     },
     "unknown_140": {
-      "ffv_name": null,
-      "hypothesis": "Single occurrence — possibly a training status or recovery advisory block",
-      "confidence": "speculative",
+      "ffv_name": "activity_metrics",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — session-level activity metrics summary."
     },
     "unknown_141": {
-      "ffv_name": null,
-      "hypothesis": "Single occurrence — possibly paired with unknown_140 as a related training metric block",
-      "confidence": "speculative",
+      "ffv_name": "epo_status",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). EPO = Extended Prediction Orbit (satellite data for faster GPS acquisition). Single occurrence per file."
     },
     "unknown_147": {
-      "ffv_name": null,
-      "hypothesis": "Single occurrence — unknown",
-      "confidence": "unknown",
+      "ffv_name": "sensor_settings",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — sensor configuration block."
     },
     "unknown_216": {
-      "ffv_name": null,
-      "hypothesis": "20 occurrences in a ~49-minute run — possibly a periodic summary message (e.g. every 2–3 minutes), could be stress, body battery, or HRV snapshots",
-      "confidence": "speculative",
+      "ffv_name": "time_in_zone",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Note: unrelated to session field def_num 216 (ending_body_battery) — message type number and field def_num are different namespaces. Count of 20 likely reflects one message per HR zone (or zone × metric combination)."
     },
     "unknown_233": {
       "ffv_name": null,
@@ -82,18 +91,20 @@
       "notes": null
     },
     "unknown_312": {
-      "ffv_name": null,
-      "hypothesis": "10 occurrences — unknown; does not obviously map to laps, devices, or events",
-      "confidence": "unknown",
+      "ffv_name": "split",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). 10 occurrences in record-001 — likely one per km/mile auto-split plus a partial final split."
     },
     "unknown_313": {
-      "ffv_name": null,
-      "hypothesis": "4 occurrences — possibly paired with unknown_312",
-      "confidence": "speculative",
+      "ffv_name": "split_summary",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). Paired with unknown_312 (split) as expected — aggregated summary across split types."
     },
     "unknown_325": {
       "ffv_name": null,
@@ -103,11 +114,12 @@
       "notes": null
     },
     "unknown_326": {
-      "ffv_name": null,
-      "hypothesis": "49 occurrences in a ~49-minute run — strongly suggests a once-per-minute message; likely a minute-level summary (e.g. Garmin intensity minutes, training load per minute, or metabolic snapshot)",
-      "confidence": "probable",
+      "ffv_name": "gps_event",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). 49 occurrences in a ~49-minute run — prior hypothesis of once-per-minute was correct on count but wrong on identity. GPS event log, possibly satellite fix quality or position event records."
     },
     "unknown_327": {
       "ffv_name": null,
@@ -117,11 +129,12 @@
       "notes": null
     },
     "unknown_394": {
-      "ffv_name": null,
-      "hypothesis": "Single occurrence — unknown",
-      "confidence": "unknown",
+      "ffv_name": "cpe_status",
+      "hypothesis": null,
+      "confidence": "confirmed",
+      "registry_status": "ffv_undocumented",
       "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": null
+      "notes": "Named by FitFileViewer (undocumented). CPE likely refers to Course Point or Computed Position Error. Single occurrence per file."
     },
     "unknown_499": {
       "ffv_name": null,
