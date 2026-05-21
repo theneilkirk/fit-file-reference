@@ -34,6 +34,7 @@ Short, stable identifier for the recording device. Use the manufacturer's produc
 | `fenix7prosolar` | Garmin Fenix 7 Pro Solar |
 | `forerunner965` | Garmin Forerunner 965 |
 | `forerunner255` | Garmin Forerunner 255 |
+| `forerunner35` | Garmin Forerunner 35 |
 | `pace3` | COROS Pace 3 |
 
 ---

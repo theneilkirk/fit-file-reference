@@ -6,6 +6,15 @@
   "garmin": {
 
     "record": {
+      "88": {
+        "ffv_name": null,
+        "confirmed_name": null,
+        "hypothesis": "Constant value 300 in all observed record messages; possibly step length in mm (300 mm = 30 cm stride), a fixed calibration constant, or device-specific metadata",
+        "confidence": "speculative",
+        "encoding": "Integer; observed only as constant 300",
+        "seen_in": ["garmin-forerunner35-garminconnect-singleexport-running-001"],
+        "notes": "Present in all 2001 record messages with identical value. Needs FitFileViewer lookup on FR35 file."
+      },
       "87": {
         "ffv_name": "cycle_length16",
         "confirmed_name": null,

@@ -1,0 +1,147 @@
+{
+  "record_id": "garmin-forerunner35-garminconnect-singleexport-running-001",
+  "schema_version": "0.1.0",
+
+  "provenance": {
+    "source_type": "singleexport",
+    "platform": "garminconnect",
+    "export_method": "Single activity export via Garmin Connect activity page 'Export Original'",
+    "filename_pattern": "{activity_id}_ACTIVITY.fit",
+    "zip_contents": ["{activity_id}_ACTIVITY.fit"],
+    "notes": "ZIP contains a single FIT file. Filename uses the Garmin Connect numeric activity ID as prefix."
+  },
+
+  "devices": {
+    "primary": {
+      "role": "creator",
+      "manufacturer": "garmin",
+      "product_name": "Forerunner 35",
+      "garmin_product_id": 2503,
+      "software_version": "3.6",
+      "source_type": "local",
+      "device_index": "creator",
+      "notes": "device_type=1 in device_info. No external HRM paired — optical HR only. garmin_product_id 2503 confirmed as Forerunner 35."
+    },
+    "sensors": [
+      {
+        "device_index": 1,
+        "device_type": "unknown_0",
+        "device_type_raw": 0,
+        "manufacturer": "garmin",
+        "garmin_product_id": 1689,
+        "software_version": "3.5",
+        "notes": "No serial number. Likely an internal module (GPS chip or similar). product_id 1689 unconfirmed — needs FitFileViewer lookup."
+      },
+      {
+        "device_index": 2,
+        "device_type": "unknown_3",
+        "device_type_raw": 3,
+        "manufacturer": "garmin",
+        "garmin_product_id": 2503,
+        "software_version": "3.6",
+        "notes": "Same product_id as creator (2503). Possibly accelerometer or optical HR module internal to the FR35."
+      },
+      {
+        "device_index": 3,
+        "device_type": "unknown_10",
+        "device_type_raw": 10,
+        "manufacturer": "garmin",
+        "garmin_product_id": 2503,
+        "software_version": "2.8",
+        "notes": "Same product_id as creator. Different software version (2.8 vs 3.6). Possibly a secondary firmware component or barometer module."
+      }
+    ]
+  },
+
+  "activity": {
+    "sport": "running",
+    "sub_sport": "generic",
+    "display_name": null,
+    "num_laps": 4,
+    "num_records": 2001,
+    "structured_workout": false,
+    "notes": "~33-minute outdoor run. Laps triggered by distance (1609.34 m = 1 mile auto-lap). No session def_num 110 (activity_display_name) present — field absent on FR35. No running dynamics, no respiration data, no body battery, no grade-adjusted speed. Confirms that many proprietary extensions in record-001 (Fenix 7 Pro Solar) are absent on the FR35."
+  },
+
+  "message_types": {
+    "file_id": { "count": 1 },
+    "file_creator": { "count": 1 },
+    "device_info": { "count": 8, "notes": "Two snapshots of 4 device entries — one set at activity start, one at end." },
+    "event": { "count": 3 },
+    "sport": { "count": 1 },
+    "record": { "count": 2001 },
+    "lap": { "count": 4 },
+    "session": { "count": 1 },
+    "activity": { "count": 1 },
+    "unknown_22": { "count": 1, "notes": "ffv_name: device_used. Known from record-001." },
+    "unknown_79": { "count": 1, "notes": "ffv_name: user_metrics. Known from record-001." },
+    "unknown_104": { "count": 7, "notes": "ffv_name: device_status. Count of 7 vs 9 in record-001; here count matches approximate segment or internal event count rather than exact lap count (4 laps). Needs verification." },
+    "unknown_113": { "count": 2, "notes": "ffv_name: best_effort. Same count as record-001 (2). Consistent." },
+    "unknown_140": { "count": 1, "notes": "ffv_name: activity_metrics. Single occurrence as expected." }
+  },
+
+  "fields": {
+    "record": [
+      { "def_num": 0, "name": "position_lat", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 1, "name": "position_long", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 3, "name": "heart_rate", "status": "populated", "registry_status": "sdk", "notes": "Optical HR — no external HRM paired." },
+      { "def_num": 4, "name": "cadence", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 5, "name": "distance", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 6, "name": "speed", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 73, "name": "enhanced_speed", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 88, "name": "unknown_88", "status": "populated", "registry_status": "new", "notes": "Constant value 300 across all 2001 record messages. Not in field-registry. Could be step length in mm (300 mm = 30 cm), a fixed calibration constant, or a device-specific metadata field. Needs FitFileViewer lookup." },
+      { "def_num": 253, "name": "timestamp", "status": "populated", "registry_status": "sdk" }
+    ],
+
+    "session": [
+      { "def_num": 0, "name": "event", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 1, "name": "event_type", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 2, "name": "start_time", "status": "populated", "registry_status": "sdk", "notes": "PII — timestamp stripped. Field presence confirmed." },
+      { "def_num": 3, "name": "start_position_lat", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 4, "name": "start_position_long", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 5, "name": "sport", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 6, "name": "sub_sport", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 7, "name": "total_elapsed_time", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 8, "name": "total_timer_time", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 9, "name": "total_distance", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 10, "name": "total_strides", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 11, "name": "total_calories", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 14, "name": "avg_speed", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 16, "name": "avg_heart_rate", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 17, "name": "max_heart_rate", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 18, "name": "avg_running_cadence", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 19, "name": "max_running_cadence", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 25, "name": "first_lap_index", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 26, "name": "num_laps", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 28, "name": "trigger", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 124, "name": "enhanced_avg_speed", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 253, "name": "timestamp", "status": "populated", "registry_status": "sdk", "notes": "PII — timestamp stripped. Field presence confirmed." },
+      { "def_num": 254, "name": "message_index", "status": "populated", "registry_status": "sdk" }
+    ],
+
+    "lap": [
+      { "def_num": 0, "name": "event", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 1, "name": "event_type", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 2, "name": "start_time", "status": "populated", "registry_status": "sdk", "notes": "PII — timestamps stripped. Field presence confirmed." },
+      { "def_num": 3, "name": "start_position_lat", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 4, "name": "start_position_long", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 5, "name": "end_position_lat", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 6, "name": "end_position_long", "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped. Field presence confirmed." },
+      { "def_num": 7, "name": "total_elapsed_time", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 8, "name": "total_timer_time", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 9, "name": "total_distance", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 10, "name": "total_strides", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 11, "name": "total_calories", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 13, "name": "avg_speed", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 15, "name": "avg_heart_rate", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 16, "name": "max_heart_rate", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 17, "name": "avg_running_cadence", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 18, "name": "max_running_cadence", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 24, "name": "lap_trigger", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 25, "name": "sport", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 110, "name": "enhanced_avg_speed", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 253, "name": "timestamp", "status": "populated", "registry_status": "sdk", "notes": "PII — timestamps stripped. Field presence confirmed." },
+      { "def_num": 254, "name": "message_index", "status": "populated", "registry_status": "sdk" }
+    ]
+  }
+}

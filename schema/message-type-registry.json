@@ -17,15 +17,15 @@
       "hypothesis": null,
       "confidence": "confirmed",
       "registry_status": "ffv_undocumented",
-      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": "Named by FitFileViewer (undocumented). Count of 6 in record-001 may reflect paired devices/sensors."
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001", "garmin-forerunner35-garminconnect-singleexport-running-001"],
+      "notes": "Named by FitFileViewer (undocumented). Count of 6 in record-001 (Fenix 7) may reflect paired devices/sensors; count of 1 in record-002 (FR35, no external HRM)."
     },
     "unknown_79": {
       "ffv_name": "user_metrics",
       "hypothesis": null,
       "confidence": "confirmed",
       "registry_status": "ffv_undocumented",
-      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001", "garmin-forerunner35-garminconnect-singleexport-running-001"],
       "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — likely a session-level user physiological snapshot."
     },
     "unknown_104": {
@@ -33,24 +33,24 @@
       "hypothesis": null,
       "confidence": "confirmed",
       "registry_status": "ffv_undocumented",
-      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": "Named by FitFileViewer (undocumented). Count of 9 matches lap count in record-001 — per-lap device status snapshot. Prior hypothesis of per-lap analytics was directionally correct."
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001", "garmin-forerunner35-garminconnect-singleexport-running-001"],
+      "notes": "Named by FitFileViewer (undocumented). Count of 9 matches lap count in record-001 (Fenix 7). Count of 7 in record-002 (FR35) does not match lap count (4); interpretation may be more complex."
     },
     "unknown_113": {
       "ffv_name": "best_effort",
       "hypothesis": null,
       "confidence": "confirmed",
       "registry_status": "ffv_undocumented",
-      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": "Named by FitFileViewer (undocumented). 3 occurrences in record-001; likely personal best tracking segments."
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001", "garmin-forerunner35-garminconnect-singleexport-running-001"],
+      "notes": "Named by FitFileViewer (undocumented). 3 occurrences in record-001 (Fenix 7); 2 occurrences in record-002 (FR35). Consistent with personal best tracking segments across devices."
     },
     "unknown_140": {
       "ffv_name": "activity_metrics",
       "hypothesis": null,
       "confidence": "confirmed",
       "registry_status": "ffv_undocumented",
-      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — session-level activity metrics summary."
+      "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001", "garmin-forerunner35-garminconnect-singleexport-running-001"],
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — session-level activity metrics summary. Present on both Fenix 7 and FR35, confirming it is not a high-end device feature."
     },
     "unknown_141": {
       "ffv_name": "epo_status",

@@ -6,6 +6,29 @@ Entries here represent findings that update the shared reference — newly ident
 
 ---
 
+## 2026-05-21
+
+### Source: `garmin-forerunner35-garminconnect-singleexport-running-001`
+
+**First FR35 record — new device, significantly reduced field set vs Fenix 7**
+- `forerunner35` added to vocabulary.md (garmin_product_id 2503 confirmed)
+- FR35 record messages contain only SDK fields plus one unknown (def_num 88, constant 300)
+- No running dynamics, respiration, body battery, stamina, grade-adjusted speed, wrist HR, or performance condition — all absent on FR35
+- Confirms many proprietary extensions in record-001 (Fenix 7 Pro Solar) are device-class-specific, not universal Garmin
+
+**unknown_104 (device_status) hypothesis revised**
+- Count of 7 in FR35 file does not match lap count (4); previously assumed per-lap in record-001 where count matched
+- Per-lap interpretation is incorrect or incomplete; true trigger unknown
+
+**unknown_140 (activity_metrics) confirmed as non-high-end feature**
+- Present in both Fenix 7 Pro Solar and FR35 (entry-level device), confirming this is a general Garmin Connect export feature
+
+**New field: record def_num 88**
+- Constant value 300 in all record messages; added to field-registry as speculative
+- Needs FitFileViewer lookup on FR35 file
+
+---
+
 ## 2026-05-20
 
 ### Source: `garmin-fenix7prosolar-garminconnect-singleexport-running-001`
