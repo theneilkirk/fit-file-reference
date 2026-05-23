@@ -14,9 +14,12 @@
       "confidence": "confirmed",
       "registry_status": "garmin_proprietary",
       "seen_in": [
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (documented). Single occurrence per file — session-level training configuration block."
+      "notes": "Named by FitFileViewer (documented). Single occurrence per file — session-level training configuration block. Present across all activity types."
     },
     "unknown_22": {
       "ffv_name": "device_used",
@@ -26,9 +29,12 @@
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
         "garmin-forerunner35-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Count of 6 in record-001 (Fenix 7) may reflect paired devices/sensors; count of 1 in record-002 (FR35, no external HRM)."
+      "notes": "Named by FitFileViewer (undocumented). Count varies by number of paired sensors: 6 in running-001 (HRM + other sensors), 4 in cycling-001 (HRM-Dual + others), 2 in indoorcycling-001 (HRM-Dual only), 1 in strength-001 (no external sensors). Confirms count reflects unique paired/active devices."
     },
     "unknown_79": {
       "ffv_name": "user_metrics",
@@ -38,9 +44,12 @@
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
         "garmin-forerunner35-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — likely a session-level user physiological snapshot."
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file across all activity types — session-level user physiological snapshot."
     },
     "unknown_104": {
       "ffv_name": "device_status",
@@ -50,9 +59,12 @@
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
         "garmin-forerunner35-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Count of 9 matches lap count in record-001 (Fenix 7). Count of 7 in record-002 (FR35) does not match lap count (4); interpretation may be more complex."
+      "notes": "Named by FitFileViewer (undocumented). Count varies: 9 in running-001, 11 in cycling-001, 8 in indoorcycling-001, 13 in strength-001. Count 13 in strength matches exercise_title count (13). Relationship to lap/exercise structure not fully resolved."
     },
     "unknown_113": {
       "ffv_name": "best_effort",
@@ -64,7 +76,7 @@
         "garmin-forerunner35-garminconnect-singleexport-running-001",
         "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). 3 occurrences in record-001 (Fenix 7); 2 occurrences in record-002 (FR35). Consistent with personal best tracking segments across devices."
+      "notes": "Named by FitFileViewer (undocumented). Present only in running files; absent from cycling and strength. Consistent with personal best tracking for running distance segments."
     },
     "unknown_140": {
       "ffv_name": "activity_metrics",
@@ -74,9 +86,12 @@
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
         "garmin-forerunner35-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — session-level activity metrics summary. Present on both Fenix 7 and FR35, confirming it is not a high-end device feature."
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file across all activity types — session-level activity metrics summary."
     },
     "unknown_141": {
       "ffv_name": "epo_status",
@@ -85,9 +100,12 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). EPO = Extended Prediction Orbit (satellite data for faster GPS acquisition). Single occurrence per file."
+      "notes": "Named by FitFileViewer (undocumented). EPO = Extended Prediction Orbit (satellite data for faster GPS acquisition). Single occurrence per file. Present even for indoor/no-GPS activities."
     },
     "unknown_147": {
       "ffv_name": "sensor_settings",
@@ -96,9 +114,12 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — sensor configuration block."
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file — sensor configuration block. Present across all activity types."
     },
     "unknown_216": {
       "ffv_name": "time_in_zone",
@@ -107,29 +128,38 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Note: unrelated to session field def_num 216 (ending_body_battery) — message type number and field def_num are different namespaces. Count of 20 likely reflects one message per HR zone (or zone x metric combination)."
+      "notes": "Named by FitFileViewer (undocumented). Count varies widely by activity type: 20 in running, 5 in outdoor cycling, 3 in indoor cycling, 154 in strength. Strength count of 154 is far higher — possibly one per set per zone combination. Note: unrelated to session field def_num 216 (ending_body_battery)."
     },
     "unknown_233": {
       "ffv_name": null,
-      "hypothesis": "Count exactly matches record message count (2923) — one per second alongside each record message. Likely a parallel per-second proprietary data stream; strong candidate for running dynamics or raw sensor data from the chest strap or accelerometer",
-      "confidence": "probable",
-      "seen_in": [
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
-      ],
-      "notes": "Count matches gps_metadata count exactly in both observed files (2923:2923 in -001; 2390:2390 in -workout-001). Paired per GPS point, not per record. Neither fitparse nor FFV identifies this message type. Purpose unknown."
-    },
-    "unknown_288": {
-      "ffv_name": null,
-      "hypothesis": "Count is 2 in -001 (non-workout run) and 3 in -workout-001. Original bookend hypothesis no longer fits cleanly. Purpose unknown. FFV does not identify.",
+      "hypothesis": "Independent parallel data stream running at higher-than-record frequency. GPS-paired hypothesis DISPROVED: indoor_cycling file contains 2727 occurrences with no gps_metadata at all. Runs at approximately 3× record rate in indoor cycling. Purpose unknown — possibly raw sensor data (accelerometer, HRV, barometer) logged independently of activity record messages.",
       "confidence": "speculative",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": null
+      "notes": "Outdoor cycling: 3627 unknown_233 = 3627 gps_metadata (count coincidence). Indoor cycling: 2727 unknown_233, 0 gps_metadata. Strength: 3883 unknown_233. Neither fitparse nor FFV identifies this message type."
+    },
+    "unknown_288": {
+      "ffv_name": null,
+      "hypothesis": "Count is consistently 2-3 across all file types (running, cycling, indoor cycling, strength). Not correlated with lap, set, or GPS structure. May be bookend markers for session phases or fixed Garmin internal state messages.",
+      "confidence": "speculative",
+      "seen_in": [
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+      ],
+      "notes": "Count: 3 in cycling-001, 2 in indoorcycling-001, 3 in strength-001. Consistent with prior running values. FFV does not identify."
     },
     "unknown_312": {
       "ffv_name": "split",
@@ -138,9 +168,10 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). 10 occurrences in record-001 — likely one per km/mile auto-split plus a partial final split."
+      "notes": "Named by FitFileViewer (undocumented). Absent from cycling and indoor cycling files — present only in running and strength. In strength, 76 occurrences likely correspond to individual sets. In running, corresponds to distance auto-splits."
     },
     "unknown_313": {
       "ffv_name": "split_summary",
@@ -149,19 +180,21 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Paired with unknown_312 (split) as expected — aggregated summary across split types."
+      "notes": "Named by FitFileViewer (undocumented). Absent from cycling files. Paired with unknown_312 (split). 3 occurrences in strength-001."
     },
     "unknown_325": {
       "ffv_name": null,
-      "hypothesis": "336 occurrences — sub-minute frequency suggests a periodic metric; possible candidates: HRV intervals, respiration snapshots, or stress measurements",
+      "hypothesis": "Sub-minute periodic metric. Outdoor cycling: 190 occurrences. Absent from indoor cycling and strength — may be GPS-dependent or outdoor-specific. Possible candidates: GPS quality snapshots, barometer readings, or outdoor environmental data.",
       "confidence": "speculative",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001"
       ],
-      "notes": "FFV does not identify. Sub-minute frequency in both files. Purpose unknown."
+      "notes": "FFV does not identify. Present only in outdoor GPS activities. Absence from indoor cycling and strength narrows candidates to outdoor/GPS-dependent data."
     },
     "unknown_326": {
       "ffv_name": "gps_event",
@@ -170,19 +203,25 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). 49 occurrences in a ~49-minute run — prior hypothesis of once-per-minute was correct on count but wrong on identity. GPS event log, possibly satellite fix quality or position event records."
+      "notes": "Named by FitFileViewer (undocumented). Count varies dramatically: 81 in outdoor cycling (~58 min), 49 in running (~49 min), 1 in indoor cycling, 1 in strength. High count in outdoor GPS activities; minimal in indoor/no-GPS modes. GPS event log."
     },
     "unknown_327": {
       "ffv_name": null,
-      "hypothesis": "Count exactly matches workout_step count in -workout-001 (5:5). In -001 (no structured workout), count was 5 — a coincidence or consistent behaviour. Possible workout_step supplementary data; FFV does not identify.",
+      "hypothesis": "Count consistently 3-5 across all file types including non-workout and strength. Not correlated with workout_step count. Purpose unknown.",
       "confidence": "speculative",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": null
+      "notes": "Count: 5 in cycling-001, 3 in indoorcycling-001, 3 in strength-001. Prior hypothesis that count matched workout_step count not supported across multiple file types. FFV does not identify."
     },
     "unknown_394": {
       "ffv_name": "cpe_status",
@@ -191,9 +230,12 @@
       "registry_status": "ffv_undocumented",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). CPE likely refers to Course Point or Computed Position Error. Single occurrence per file."
+      "notes": "Named by FitFileViewer (undocumented). Single occurrence per file across all activity types."
     },
     "unknown_499": {
       "ffv_name": null,
@@ -201,9 +243,10 @@
       "confidence": "unknown",
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
+        "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001"
       ],
-      "notes": "FFV does not identify. Single occurrence in both files."
+      "notes": "FFV does not identify. Present in outdoor cycling (absent from indoor cycling and strength). May be GPS or outdoor-specific."
     }
   }
 }

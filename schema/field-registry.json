@@ -1,10 +1,13 @@
 {
   "_description": "Cross-record registry of unknown FIT fields within named message types, keyed by manufacturer → message_type → def_num. Tracks what each proprietary field number means within a specific message type context. def_num is message-type-scoped — the same number in different message types means different things. Only unknown/proprietary fields are listed here; SDK-defined fields are documented by the FIT spec. Update alongside writing a new record whenever a field is confirmed or a new hypothesis formed.",
-  "_confidence_values": ["confirmed", "probable", "speculative", "unknown"],
+  "_confidence_values": [
+    "confirmed",
+    "probable",
+    "speculative",
+    "unknown"
+  ],
   "_schema_version": "0.1.0",
-
   "garmin": {
-
     "record": {
       "88": {
         "ffv_name": null,
@@ -12,7 +15,9 @@
         "hypothesis": "Constant value 300 in all observed record messages; possibly step length in mm (300 mm = 30 cm stride), a fixed calibration constant, or device-specific metadata",
         "confidence": "speculative",
         "encoding": "Integer; observed only as constant 300",
-        "seen_in": ["garmin-forerunner35-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-forerunner35-garminconnect-singleexport-running-001"
+        ],
         "notes": "Present in all 2001 record messages with identical value. Needs FitFileViewer lookup on FR35 file."
       },
       "87": {
@@ -21,7 +26,9 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
         "notes": "Named by FitFileViewer but marked undocumented"
       },
       "90": {
@@ -30,17 +37,22 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "Integer; typically ranges ±20 from baseline of 0",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
         "notes": "Garmin Performance Condition — real-time metric comparing expected vs actual performance during activity. Confirmed by FitFileViewer."
       },
       "107": {
         "ffv_name": null,
         "confirmed_name": null,
-        "hypothesis": null,
-        "confidence": "unknown",
+        "hypothesis": "Boolean or small integer flag (values 0, 1). Present in outdoor GPS activities (running, outdoor cycling); absent from indoor cycling and strength. May relate to GPS state or an outdoor-specific sensor flag.",
+        "confidence": "speculative",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001"
+        ],
+        "notes": "Absent from indoor cycling and strength record messages."
       },
       "108": {
         "ffv_name": "enhanced_respiration_rate",
@@ -48,8 +60,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 100 = breaths/min",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Confirmed via FitFileViewer. Absent from strength record — likely requires chest strap for respiration sensing."
       },
       "134": {
         "ffv_name": null,
@@ -57,8 +73,13 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Empty in all observed Fenix 7 Pro Solar files across all activity types."
       },
       "135": {
         "ffv_name": null,
@@ -66,8 +87,13 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Populated in all activity types. Small integers observed."
       },
       "136": {
         "ffv_name": "wrist_heart_rate",
@@ -75,8 +101,13 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "bpm integer, same scale as def_num 3",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Optical wrist HR; present as secondary source when external HRM paired. Confirmed by FitFileViewer."
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Optical wrist HR; present as secondary source when external HRM paired, and as sole HR source when no HRM. Confirmed by FitFileViewer."
       },
       "137": {
         "ffv_name": "stamina_potential",
@@ -84,8 +115,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Absent from strength record messages."
       },
       "138": {
         "ffv_name": "stamina",
@@ -93,8 +128,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Absent from strength record messages."
       },
       "140": {
         "ffv_name": "grade_adjusted_speed",
@@ -102,8 +141,21 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 1000 = m/s",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Running-specific metric — not present in cycling or strength record messages."
+      },
+      "141": {
+        "ffv_name": null,
+        "confirmed_name": null,
+        "hypothesis": "Strength-specific field. Sample values: 0, 29, 16. Changes every few seconds. Could be workout step index, rep counter, or a strength-specific sensor channel. Present in all 1418 strength record messages; absent from all running and cycling records.",
+        "confidence": "unknown",
+        "encoding": null,
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "FitFileViewer does not identify. Only observed in strength activity type."
       },
       "143": {
         "ffv_name": "body_battery",
@@ -111,8 +163,13 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "Integer 0–100",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Snapshot at activity start; constant throughout recording"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Snapshot at activity start; constant throughout recording. Present across all activity types."
       },
       "144": {
         "ffv_name": null,
@@ -120,11 +177,14 @@
         "hypothesis": "External HR sensor duplicate — mirrors def_num 3 when external HRM paired",
         "confidence": "probable",
         "encoding": "bpm integer, same scale as def_num 3",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Hypothesis based on observed values exactly matching def_num 3 throughout the activity"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Hypothesis based on observed values exactly matching def_num 3 throughout the activity. Absent from strength (no HRM paired)."
       }
     },
-
     "session": {
       "33": {
         "ffv_name": null,
@@ -132,8 +192,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "38": {
         "ffv_name": "end_position_lat",
@@ -141,8 +203,11 @@
         "hypothesis": "GPS latitude of activity end point",
         "confidence": "probable",
         "encoding": "Garmin semicircle format (same as SDK lat fields)",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "PII — coordinates not captured in records"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001"
+        ],
+        "notes": "PII — coordinates not captured in records. Empty in indoor/no-GPS activities."
       },
       "39": {
         "ffv_name": "end_position_long",
@@ -150,17 +215,23 @@
         "hypothesis": "GPS longitude of activity end point",
         "confidence": "probable",
         "encoding": "Garmin semicircle format (same as SDK long fields)",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "PII — coordinates not captured in records"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001"
+        ],
+        "notes": "PII — coordinates not captured in records. Empty in indoor/no-GPS activities."
       },
       "78": {
-        "ffv_name": null,
+        "ffv_name": "active_time",
         "confirmed_name": null,
-        "hypothesis": null,
-        "confidence": "unknown",
-        "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "hypothesis": "Total active (non-rest) time. Populated in strength (value 2082983), empty in running and cycling records. May be in milliseconds.",
+        "confidence": "probable",
+        "encoding": "Integer; unit unclear — possibly milliseconds",
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Named 'active time(s)' by FitFileViewer. Empty in running and outdoor/indoor cycling; populated only in strength. Activity-type-specific."
       },
       "79": {
         "ffv_name": null,
@@ -168,8 +239,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "80": {
         "ffv_name": null,
@@ -177,8 +250,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "81": {
         "ffv_name": null,
@@ -186,8 +261,13 @@
         "hypothesis": "Reserved or always-off flag",
         "confidence": "speculative",
         "encoding": "Always 0",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Always 0 across all observed files"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Always 0 across all observed files and activity types."
       },
       "106": {
         "ffv_name": null,
@@ -195,8 +275,13 @@
         "hypothesis": "Reserved or always-off flag",
         "confidence": "speculative",
         "encoding": "Always 0",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Always 0 across all observed files"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Always 0 across all observed files and activity types."
       },
       "107": {
         "ffv_name": null,
@@ -204,8 +289,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "108": {
         "ffv_name": null,
@@ -213,8 +300,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001; note: def_num 108 in record message is enhanced_respiration_rate — different meaning in session context"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files. Note: def_num 108 in record message is enhanced_respiration_rate — different meaning in session context."
       },
       "109": {
         "ffv_name": null,
@@ -222,17 +311,24 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "110": {
         "ffv_name": "activity_display_name",
         "confirmed_name": null,
-        "hypothesis": "Human-readable activity label as shown in Garmin Connect (e.g. 'Run', 'Treadmill', 'Bike Indoor')",
+        "hypothesis": "Human-readable activity label as shown in Garmin Connect",
         "confidence": "probable",
         "encoding": "UTF-8 string",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "More specific than the SDK sport field — distinguishes sub-types like Treadmill from generic Running"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Observed values: 'Run', 'Bike', 'Bike Indoor', 'Strength'. More specific than the SDK sport field — distinguishes sub-types."
       },
       "138": {
         "ffv_name": null,
@@ -240,7 +336,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": "Two-integer tuple; second value always 0",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "150": {
@@ -249,7 +350,9 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
         "notes": null
       },
       "151": {
@@ -258,7 +361,12 @@
         "hypothesis": "Workout step count; 0 when no structured workout active",
         "confidence": "speculative",
         "encoding": "Integer",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "152": {
@@ -267,7 +375,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "157": {
@@ -276,8 +389,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "158": {
         "ffv_name": null,
@@ -285,8 +400,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "168": {
         "ffv_name": "training_load_peak",
@@ -294,7 +411,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "169": {
@@ -303,8 +425,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 100 = breaths/min",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in strength — no chest strap, so no respiration data."
       },
       "170": {
         "ffv_name": "enhanced_max_respiration_rate",
@@ -312,8 +438,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 100 = breaths/min",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in strength."
       },
       "177": {
         "ffv_name": null,
@@ -321,8 +451,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "178": {
         "ffv_name": "est_sweat_loss",
@@ -330,7 +462,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "179": {
@@ -339,8 +476,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "180": {
         "ffv_name": "enhanced_min_respiration_rate",
@@ -348,8 +487,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 100 = breaths/min",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in strength."
       },
       "181": {
         "ffv_name": null,
@@ -357,8 +500,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "184": {
         "ffv_name": null,
@@ -366,7 +511,12 @@
         "hypothesis": "Reserved or always-off flag",
         "confidence": "speculative",
         "encoding": "Always 0",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "185": {
@@ -375,8 +525,10 @@
         "hypothesis": "Performance Condition — session-level summary. Empty when no structured workout.",
         "confidence": "speculative",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001; may populate in structured workout or race activities"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files including structured strength workout."
       },
       "187": {
         "ffv_name": null,
@@ -384,8 +536,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "188": {
         "ffv_name": "primary_benefit",
@@ -393,8 +547,13 @@
         "hypothesis": "Training Effect category (0–5 integer scale: 0=No Effect, 1=Minor, 2=Maintaining, 3=Improving, 4=Highly Improving, 5=Overreaching)",
         "confidence": "probable",
         "encoding": "Integer 0–5",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Value 3 observed in record-001 (Improving). Named 'primary_benefit' by FitFileViewer."
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Present across all activity types."
       },
       "189": {
         "ffv_name": null,
@@ -402,8 +561,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "190": {
         "ffv_name": null,
@@ -411,17 +572,24 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "192": {
         "ffv_name": "workout_feel",
         "confirmed_name": null,
-        "hypothesis": "Post-activity feel rating",
+        "hypothesis": "Post-activity feel rating. Populates when user submits a feel rating after an activity.",
         "confidence": "ffv_undocumented",
         "encoding": "Observed values: 50, 75",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Field is defined across all activity types. Populated only when user submits a feel rating; otherwise empty."
       },
       "193": {
         "ffv_name": "workout_rpe",
@@ -429,8 +597,13 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 10 = RPE on 1–10 scale",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Confirmed via FitFileViewer and empirical validation in Training Engine"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Confirmed via FitFileViewer and empirical validation in Training Engine. Populated only when user submits RPE."
       },
       "194": {
         "ffv_name": null,
@@ -438,8 +611,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "195": {
         "ffv_name": null,
@@ -447,8 +622,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "196": {
         "ffv_name": "metabolic_calories",
@@ -456,7 +633,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "197": {
@@ -465,8 +647,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "198": {
         "ffv_name": null,
@@ -474,8 +658,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "199": {
         "ffv_name": "total_fractional_ascent",
@@ -483,8 +669,13 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Field defined in all activity types; populated only when GPS/elevation available."
       },
       "200": {
         "ffv_name": "total_fractional_descent",
@@ -492,7 +683,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "201": {
@@ -501,8 +697,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "202": {
         "ffv_name": "recovery_heart_rate",
@@ -510,8 +708,12 @@
         "hypothesis": "Heart rate measured shortly after activity ends",
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001; may populate in race or maximal effort activities where Garmin records recovery HR"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Empty in running-001 and indoor cycling; populated in outdoor cycling (value 8) and strength (value 16). Values appear low for a typical recovery HR reading — encoding or measurement timing unclear. May require further investigation with FitFileViewer on these activity types."
       },
       "205": {
         "ffv_name": "beginning_potential",
@@ -519,8 +721,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in strength — stamina metrics may not apply to this sport type."
       },
       "206": {
         "ffv_name": "ending_potential",
@@ -528,8 +734,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in strength."
       },
       "207": {
         "ffv_name": "min_stamina",
@@ -537,8 +747,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in strength."
       },
       "211": {
         "ffv_name": "grade_adjusted_speed",
@@ -546,8 +760,13 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 1000 = m/s (session average)",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Session-level average. Same field name as record def_num 140 but different def_num in session context."
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Session-level average. Same field name as record def_num 140 but different def_num in session context. Empty in cycling session (no grade adjusted speed for cycling)."
       },
       "212": {
         "ffv_name": "wind_data_enabled",
@@ -555,7 +774,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": "Boolean (0/1)",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "215": {
@@ -564,7 +788,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "Integer 0–100",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "216": {
@@ -573,7 +802,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "Integer 0–100",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
         "notes": null
       },
       "218": {
@@ -582,8 +816,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "224": {
         "ffv_name": null,
@@ -591,8 +827,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "225": {
         "ffv_name": null,
@@ -600,11 +840,14 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        ],
+        "notes": "Empty in all observed files."
       }
     },
-
     "lap": {
       "27": {
         "ffv_name": "nec_lat",
@@ -612,8 +855,12 @@
         "hypothesis": "North-east corner latitude of lap bounding box",
         "confidence": "probable",
         "encoding": "Garmin semicircle format",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "PII — coordinates not captured in records"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "PII — coordinates not captured in records. Empty in indoor/no-GPS lap messages."
       },
       "28": {
         "ffv_name": "nec_long",
@@ -621,8 +868,12 @@
         "hypothesis": "North-east corner longitude of lap bounding box",
         "confidence": "probable",
         "encoding": "Garmin semicircle format",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "PII — coordinates not captured in records"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "PII — coordinates not captured in records."
       },
       "29": {
         "ffv_name": "swc_lat",
@@ -630,8 +881,12 @@
         "hypothesis": "South-west corner latitude of lap bounding box",
         "confidence": "probable",
         "encoding": "Garmin semicircle format",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "PII — coordinates not captured in records"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "PII — coordinates not captured in records."
       },
       "30": {
         "ffv_name": "swc_long",
@@ -639,8 +894,12 @@
         "hypothesis": "South-west corner longitude of lap bounding box",
         "confidence": "probable",
         "encoding": "Garmin semicircle format",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "PII — coordinates not captured in records"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "PII — coordinates not captured in records."
       },
       "70": {
         "ffv_name": null,
@@ -648,8 +907,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "72": {
         "ffv_name": null,
@@ -657,8 +920,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "73": {
         "ffv_name": null,
@@ -666,8 +933,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "90": {
         "ffv_name": null,
@@ -675,8 +946,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001. Note: def_num 90 in record message = performance_condition — different meaning in lap context."
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files. Note: def_num 90 in record message = performance_condition — different meaning in lap context."
       },
       "96": {
         "ffv_name": null,
@@ -684,8 +959,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "97": {
         "ffv_name": null,
@@ -693,8 +972,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "124": {
         "ffv_name": "min_temperature",
@@ -702,7 +985,11 @@
         "hypothesis": null,
         "confidence": "probable",
         "encoding": "°C integer",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
         "notes": null
       },
       "125": {
@@ -711,8 +998,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "126": {
         "ffv_name": null,
@@ -720,8 +1011,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "136": {
         "ffv_name": "enhanced_avg_respiration_rate",
@@ -729,7 +1024,11 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 100 = breaths/min",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
         "notes": "Lap average. Note: def_num 136 in record message = wrist_heart_rate — different meaning in lap context."
       },
       "137": {
@@ -738,7 +1037,11 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 100 = breaths/min",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
         "notes": "Lap maximum."
       },
       "143": {
@@ -747,8 +1050,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "145": {
         "ffv_name": "est_sweat_loss",
@@ -756,7 +1063,11 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
         "notes": null
       },
       "149": {
@@ -765,8 +1076,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "152": {
         "ffv_name": "execution_score",
@@ -774,8 +1089,12 @@
         "hypothesis": "Structured workout execution score per lap",
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001 (no structured workout). Expected to populate in structured workout laps."
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files (none had structured workout laps)."
       },
       "154": {
         "ffv_name": null,
@@ -783,8 +1102,12 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "155": {
         "ffv_name": "resting_calories",
@@ -792,7 +1115,11 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
         "notes": null
       },
       "156": {
@@ -801,8 +1128,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in indoor cycling (no GPS/elevation)."
       },
       "157": {
         "ffv_name": "total_fractional_descent",
@@ -810,8 +1141,12 @@
         "hypothesis": null,
         "confidence": "ffv_undocumented",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in indoor cycling."
       },
       "161": {
         "ffv_name": "grade_adjusted_speed",
@@ -819,8 +1154,12 @@
         "hypothesis": null,
         "confidence": "confirmed",
         "encoding": "raw / 1000 = m/s (lap average)",
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": null
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-cycling-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in cycling lap messages — running-specific metric."
       },
       "166": {
         "ffv_name": null,
@@ -828,8 +1167,10 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001"
+        ],
+        "notes": "Empty in all observed files."
       },
       "167": {
         "ffv_name": null,
@@ -837,8 +1178,11 @@
         "hypothesis": null,
         "confidence": "unknown",
         "encoding": null,
-        "seen_in": ["garmin-fenix7prosolar-garminconnect-singleexport-running-001"],
-        "notes": "Empty in record-001"
+        "seen_in": [
+          "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
+          "garmin-fenix7prosolar-garminconnect-singleexport-indoorcycling-001"
+        ],
+        "notes": "Empty in all observed files."
       }
     }
   }
