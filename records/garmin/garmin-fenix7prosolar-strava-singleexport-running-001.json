@@ -1,0 +1,147 @@
+{
+  "record_id": "garmin-fenix7prosolar-strava-singleexport-running-001",
+  "schema_version": "0.1.0",
+
+  "provenance": {
+    "source_type": "singleexport",
+    "platform": "strava",
+    "export_method": "Activity page on strava.com > manual export of original FIT file",
+    "filename_pattern": "{activity_title_with_underscores}.fit",
+    "notes": "First strava-sourced record in the reference. Filename derives from the Strava activity title ('Z4 Hill Repeats' -> Z4_Hill_Repeats.fit), not the numeric ID pattern used by garminconnect exports. The underlying activity was originally recorded on the same device as garmin-fenix7prosolar-garminconnect-singleexport-running-001, giving a same-device, different-platform comparison."
+  },
+
+  "devices": {
+    "primary": {
+      "role": "creator",
+      "manufacturer": "garmin",
+      "product_name": "fenix 7 pro solar",
+      "garmin_product_id": 4375,
+      "source_type": "local",
+      "device_index": "creator",
+      "notes": "software_version field absent from file_id/device_info in this export (populated in the equivalent garminconnect export)."
+    },
+    "sensors": [
+      {
+        "device_index": 1,
+        "device_type": "barometer",
+        "manufacturer": "garmin",
+        "product_name": "fenix 7 pro solar",
+        "garmin_product_id": 4375,
+        "source_type": "local",
+        "notes": "Internal barometric altimeter module, per prior garminconnect record for this device."
+      },
+      {
+        "device_index": 2,
+        "device_type": "gps",
+        "manufacturer": "garmin",
+        "product_name": "ag3335m",
+        "garmin_product_id": 3865,
+        "source_type": "local",
+        "notes": "MediaTek AG3335M GPS chip embedded in the Fenix 7 Pro Solar. Identity carried over from garmin-fenix7prosolar-garminconnect-singleexport-running-001 (same product code)."
+      },
+      {
+        "device_index": 3,
+        "device_type": "heart_rate",
+        "manufacturer": "garmin",
+        "product_name": "hrm dual",
+        "garmin_product_id": 3299,
+        "source_type": "antplus",
+        "notes": "Garmin HRM-Dual chest strap, identity carried over from the equivalent garminconnect record. Paired at recording time, but this export contains no heart_rate field anywhere in record/session/lap messages — see key finding below."
+      },
+      {
+        "device_index": 4,
+        "device_type": "accelerometer",
+        "source_type": "local",
+        "notes": "No manufacturer or product fields populated, consistent with prior record."
+      },
+      {
+        "device_index": 5,
+        "device_type_raw": 8,
+        "source_type": "local",
+        "notes": "Unknown internal module, unresolved in prior record too. No manufacturer or product fields populated."
+      },
+      {
+        "device_index": 6,
+        "device_type": "whr",
+        "source_type": "local",
+        "notes": "Wrist heart rate optical module. No manufacturer or product fields populated."
+      },
+      {
+        "device_index": 7,
+        "device_type": "sensor_hub",
+        "manufacturer": "garmin",
+        "product_name": "fenix 7 pro solar",
+        "garmin_product_id": 4375,
+        "source_type": "local",
+        "notes": "Internal sensor hub."
+      }
+    ]
+  },
+
+  "activity": {
+    "sport": "running",
+    "sub_sport": "generic",
+    "display_name": null,
+    "num_laps": 17,
+    "num_records": 3017,
+    "structured_workout": false,
+    "notes": "No activity_display_name field present in this export (session def_num 110 absent entirely, not just empty)."
+  },
+
+  "message_types": {
+    "activity":     { "count": 1 },
+    "device_info":  { "count": 16, "notes": "8 devices x 2 timestamps (activity start and end), matching prior record's pattern." },
+    "event":        { "count": 2 },
+    "file_id":      { "count": 1 },
+    "lap":          { "count": 17 },
+    "record":       { "count": 3017 },
+    "session":      { "count": 1 },
+    "unknown_312":  { "count": 27, "notes": "Registry-confirmed as 'split' (ffv_undocumented). Count of 27 across 17 laps does not map 1:1 to laps; consistent with the registry's existing note that split count does not correlate simply with lap count. First occurrence of this message type in a non-garminconnect (strava) source." }
+  },
+
+  "key_finding": {
+    "title": "Strava manual export is a stripped-down re-encode, not a passthrough of the original Garmin file",
+    "summary": "Compared to garmin-fenix7prosolar-garminconnect-singleexport-running-001 (same physical device), this strava-sourced export of what is presumably the same underlying recording contains none of the ~20 Garmin proprietary/undocumented message types (unknown_13, unknown_22, unknown_79, unknown_104, unknown_113, unknown_140, unknown_141, unknown_147, unknown_216, unknown_233, unknown_288, unknown_313, unknown_325, unknown_326, unknown_327, unknown_394, unknown_499) seen in the garminconnect export, and only unknown_312 (split) survives. Every field observed in record, session, and lap messages in this file is a plain FIT SDK field (registry_status sdk) -- zero garmin_proprietary or ffv_undocumented fields appear at all. Most notably, the heart_rate field (record def_num 3) is entirely absent, despite an HRM-Dual chest strap (garmin_product 3299) appearing in device_info as a paired sensor. device_info itself is also thinner: no software_version, hardware_version, or device_type fields populated for any entry, only device_index, manufacturer, and garmin_product/product.",
+    "confidence": "probable",
+    "caveat": "Cannot confirm from this file alone whether Strava strips these fields/messages during export, whether the original Garmin upload to Strava already lacked them, or whether 'Export Original' on strava.com returns a re-encoded file rather than the byte-identical upload. Would need a same-activity garminconnect export for direct comparison to confirm root cause."
+  },
+
+  "fields": {
+    "record": [
+      { "def_num": 0,   "name": "position_lat",      "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped from this record. Field presence confirmed." },
+      { "def_num": 1,   "name": "position_long",     "status": "populated", "registry_status": "sdk", "notes": "PII — coordinates stripped from this record. Field presence confirmed." },
+      { "def_num": 4,   "name": "cadence",           "status": "populated", "registry_status": "sdk" },
+      { "def_num": 5,   "name": "distance",          "status": "populated", "registry_status": "sdk" },
+      { "def_num": 7,   "name": "power",             "status": "populated", "registry_status": "sdk", "notes": "Running power from Fenix 7 Pro Solar native algorithm; no external power meter paired." },
+      { "def_num": 13,  "name": "temperature",       "status": "populated", "registry_status": "sdk" },
+      { "def_num": 73,  "name": "enhanced_speed",    "status": "populated", "registry_status": "sdk" },
+      { "def_num": 78,  "name": "enhanced_altitude", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 253, "name": "timestamp",         "status": "populated", "registry_status": "sdk" }
+    ],
+    "session": [
+      { "def_num": 2,   "name": "start_time",           "status": "populated", "registry_status": "sdk", "notes": "PII — precise timestamp not captured in this record; pattern only (early-morning start, ~50 min duration)." },
+      { "def_num": 5,   "name": "sport",                "status": "populated", "registry_status": "sdk" },
+      { "def_num": 6,   "name": "sub_sport",             "status": "populated", "registry_status": "sdk" },
+      { "def_num": 7,   "name": "total_elapsed_time",    "status": "populated", "registry_status": "sdk" },
+      { "def_num": 8,   "name": "total_timer_time",      "status": "populated", "registry_status": "sdk" },
+      { "def_num": 9,   "name": "total_distance",        "status": "populated", "registry_status": "sdk" },
+      { "def_num": 10,  "name": "total_strides",         "status": "populated", "registry_status": "sdk" },
+      { "def_num": 11,  "name": "total_calories",        "status": "populated", "registry_status": "sdk" },
+      { "def_num": 18,  "name": "avg_running_cadence",   "status": "populated", "registry_status": "sdk" },
+      { "def_num": 22,  "name": "total_ascent",          "status": "populated", "registry_status": "sdk" },
+      { "def_num": 23,  "name": "total_descent",         "status": "populated", "registry_status": "sdk" },
+      { "def_num": 26,  "name": "num_laps",              "status": "populated", "registry_status": "sdk" },
+      { "def_num": 48,  "name": "total_work",            "status": "populated", "registry_status": "sdk" },
+      { "def_num": 57,  "name": "avg_temperature",       "status": "populated", "registry_status": "sdk" },
+      { "def_num": 253, "name": "timestamp",             "status": "populated", "registry_status": "sdk", "notes": "PII — precise timestamp not captured; matches session start_time." }
+    ],
+    "lap": [
+      { "def_num": 2,   "name": "start_time",         "status": "populated", "registry_status": "sdk", "notes": "PII — precise timestamps not captured; relative lap durations documented in message_types/key_finding instead." },
+      { "def_num": 7,   "name": "total_elapsed_time", "status": "populated", "registry_status": "sdk" },
+      { "def_num": 8,   "name": "total_timer_time",   "status": "populated", "registry_status": "sdk" },
+      { "def_num": 9,   "name": "total_distance",     "status": "populated", "registry_status": "sdk" },
+      { "def_num": 21,  "name": "total_ascent",       "status": "populated", "registry_status": "sdk" },
+      { "def_num": 253, "name": "timestamp",          "status": "populated", "registry_status": "sdk", "notes": "PII — precise timestamps not captured." }
+    ]
+  }
+}

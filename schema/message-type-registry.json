@@ -169,9 +169,10 @@
       "seen_in": [
         "garmin-fenix7prosolar-garminconnect-singleexport-running-001",
         "garmin-fenix7prosolar-garminconnect-singleexport-running-workout-001",
-        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001"
+        "garmin-fenix7prosolar-garminconnect-singleexport-strength-001",
+        "garmin-fenix7prosolar-strava-singleexport-running-001"
       ],
-      "notes": "Named by FitFileViewer (undocumented). Absent from cycling and indoor cycling files — present only in running and strength. In strength, 76 occurrences likely correspond to individual sets. In running, corresponds to distance auto-splits."
+      "notes": "Named by FitFileViewer (undocumented). Absent from cycling and indoor cycling files — present only in running and strength. In strength, 76 occurrences likely correspond to individual sets. In running, corresponds to distance auto-splits. First strava-sourced occurrence (27 in a 17-lap hill repeats run) confirms this message type survives Strava's stripped re-encode even though almost every other proprietary message type does not — it is the only non-SDK message type present in that file."
     },
     "unknown_313": {
       "ffv_name": "split_summary",

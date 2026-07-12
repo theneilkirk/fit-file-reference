@@ -6,6 +6,21 @@ Entries here represent findings that update the shared reference — newly ident
 
 ---
 
+## 2026-07-12
+
+### Source: `garmin-fenix7prosolar-strava-singleexport-running-001`
+
+**First strava-sourced record — Strava's manual export is a stripped re-encode, not a passthrough**
+- Same physical device (Fenix 7 Pro Solar, product 4375) as `garmin-fenix7prosolar-garminconnect-singleexport-running-001`, but exported via strava.com instead of Garmin Connect
+- Of the ~20 Garmin proprietary/undocumented message types seen in the garminconnect export, only `unknown_312` (split) survives; every other one is absent
+- Every observed field in record/session/lap messages is a plain SDK field — zero `garmin_proprietary` or `ffv_undocumented` fields anywhere in this file
+- `heart_rate` (record def_num 3) is entirely absent, despite an HRM-Dual chest strap (garmin_product 3299) still appearing in `device_info` as a paired sensor
+- `device_info` itself is thinner: no `software_version`, `hardware_version`, or `device_type` populated for any entry
+- `strava` added as a confirmed source_platform in practice (already present in vocabulary.md, previously unused)
+- Root cause unconfirmed — could be Strava re-encoding on export, or the original upload to Strava already lacking these fields. Flagged as `probable` confidence pending a same-activity garminconnect comparison
+
+---
+
 ## 2026-05-21
 
 ### Source: `garmin-forerunner35-garminconnect-singleexport-running-001`
